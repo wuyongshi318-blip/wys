@@ -6,7 +6,7 @@
   try { state = JSON.parse(localStorage.getItem(key) || '{}'); } catch { state = {}; }
   state.prefs ||= Object.fromEntries(topics.map(t => [t, {on: t === '科研交流' || t === '日常安排', count: 1}]));
   state.materials ||= []; state.done ||= {}; state.answers ||= {};
-  let draft = null, busy = false, selectedMaterial = null;
+  let draft = null, busy = false, selectedMaterial = null, pendingPack = null;
   const baseRender = render, baseMark = mark, baseProgress = updateProgress;
   function save() {
     try { localStorage.setItem(key, JSON.stringify(state)); return true; }
@@ -63,10 +63,10 @@
       (groups.length ? groups.map(g=>`<section class="card studio-section"><div class="studio-between"><h2>${E(g.topic)}</h2><span class="pill">每日目标 ${g.target} 条</span></div>${g.items.map(i=>`<button class="studio-task" data-task="${E(i.id)}"><span><strong>${E(i.title)}</strong><small>${i.kind==='paper'?'私人文献 · 自主表达':'原创双语课程 · 5–10 分钟'}</small></span><span>${done.includes(i.id)?'已完成 ✓':'开始 →'}</span></button>`).join('')}${g.items.length<g.target?`<p class="studio-notice">当前有 ${g.items.length} 条，距离目标还缺 ${g.target-g.items.length} 条。可在私人素材里添加练习；不会用重复内容凑数。</p>`:''}</section>`).join(''):'<div class="card empty">还没有选择话题。<p><button class="primary" id="choose-topics">选择我的话题</button></p></div>');
   }
   function settingsView() {
-    return heading('本机保存版','把练习，调成你喜欢的样子。','设置、片段和回答仅保存在此浏览器。当前没有账号登录、云端同步或 AI 文献分析。共用设备上的其他使用者可能读到这些资料。')+`<form id="prefs-form" class="card studio-section"><h2>话题与每日数量</h2><p class="subtitle">关闭的话题不进入今日计划；每类可设 1–10 条。修改后立即重新安排今天的计划，已完成记录仍保留。</p>${topics.map((t,i)=>`<div class="studio-setting"><label><input type="checkbox" name="topic-${i}" ${state.prefs[t]?.on?'checked':''}> ${E(t)}</label><label class="small">每天 <input class="studio-number" type="number" name="count-${i}" min="1" max="10" required value="${state.prefs[t]?.count||1}"> 条</label></div>`).join('')}<p><button class="primary" type="submit">保存我的计划</button></p></form><section class="card studio-section"><h2>资料与备份</h2><p class="subtitle">浏览器清理数据会移除本机资料。备份包含你的私人片段和回答，请自行保管。</p><div class="studio-actions"><button class="mini" id="backup">导出学习备份</button><label class="mini studio-file-label">恢复备份<input id="restore" type="file" accept="application/json,.json" hidden></label></div><p class="small">账号登录将在配置认证服务后接入。</p></section>`;
+    return heading('本机保存版','把练习，调成你喜欢的样子。','设置、片段和回答仅保存在此浏览器。当前没有账号登录或云端同步；已分析的学习包可在私人素材中导入。共用设备上的其他使用者可能读到这些资料。')+`<form id="prefs-form" class="card studio-section"><h2>话题与每日数量</h2><p class="subtitle">关闭的话题不进入今日计划；每类可设 1–10 条。修改后立即重新安排今天的计划，已完成记录仍保留。</p>${topics.map((t,i)=>`<div class="studio-setting"><label><input type="checkbox" name="topic-${i}" ${state.prefs[t]?.on?'checked':''}> ${E(t)}</label><label class="small">每天 <input class="studio-number" type="number" name="count-${i}" min="1" max="10" required value="${state.prefs[t]?.count||1}"> 条</label></div>`).join('')}<p><button class="primary" type="submit">保存我的计划</button></p></form><section class="card studio-section"><h2>资料与备份</h2><p class="subtitle">浏览器清理数据会移除本机资料。备份包含你的私人片段和回答，请自行保管。</p><div class="studio-actions"><button class="mini" id="backup">导出学习备份</button><label class="mini studio-file-label">恢复备份<input id="restore" type="file" accept="application/json,.json" hidden></label></div><p class="small">账号登录将在配置认证服务后接入。</p></section>`;
   }
   function libraryView() {
-    return heading('只在此浏览器','让读过的论文，变成说得出的英语。','PDF / TXT 在本机解析，原文件不保存、不上传。只保存你确认的片段、出处和练习回答。暂不支持扫描版识别和自动翻译。')+`<section class="card studio-section"><h2>导入素材</h2><p class="subtitle">仅导入你有权用于此次学习的内容。合法下载不等于拥有再传播或第三方处理授权；私人保存也不能代替对许可条款的检查。</p><label class="studio-check"><input id="rights" type="checkbox"> 我已检查材料的使用权限，并仅用于本人学习。</label><div class="studio-actions"><label class="primary studio-file-label">选择 PDF / TXT<input id="paper-file" type="file" accept=".pdf,.txt,application/pdf,text/plain" hidden ${busy?'disabled':''}></label><button class="mini" id="paste-material" ${busy?'disabled':''}>粘贴文字或自写笔记</button></div><p class="small" id="import-status" role="status">单文件上限 20 MB，PDF 最多解析前 30 页。可多次导入不同片段。</p><div id="draft-form"></div></section><section class="card studio-section"><h2>我的私人素材 <span class="pill">${state.materials.length} 篇</span></h2>${state.materials.length?state.materials.map(m=>`<div class="studio-material"><div><strong>${E(m.title)}</strong><p class="small">${E(m.author)} · ${E(m.topic)} · ${E(m.location)}<br>${E(m.modes.join(' / '))}</p></div><div class="studio-actions"><button class="mini" data-open-paper="${E(m.id)}">练习</button><button class="mini" data-delete-paper="${E(m.id)}">删除</button></div></div>`).join(''):'<p class="empty">你的素材只属于你。先导入一篇，选取一段，再开始练习。</p>'}</section>`;
+    return heading('只在此浏览器','让读过的论文，变成说得出的英语。','PDF / TXT 在本机解析，原文件不保存、不上传。只保存你确认的片段、出处和练习回答。暂不支持扫描版识别和自动翻译。')+`<section class="card studio-section"><h2>导入已整理的学习包</h2><p class="subtitle">把文献交给聊天助手分析后，在这里导入生成的 JSON 学习包。标题、出处、中文导读、重点翻译和练习一次带入，不用复制原文。文件只在此浏览器读取；导入会追加素材，保留现有笔记和设置。</p><label class="primary studio-file-label">导入学习包<input id="pack-file" type="file" accept=".json,application/json" hidden></label><div id="pack-preview" role="status"></div></section><section class="card studio-section"><h2>自行导入原文（可选）</h2><p class="subtitle">仅导入你有权用于此次学习的内容。合法下载不等于拥有再传播或第三方处理授权；私人保存也不能代替对许可条款的检查。</p><label class="studio-check"><input id="rights" type="checkbox"> 我已检查材料的使用权限，并仅用于本人学习。</label><div class="studio-actions"><label class="primary studio-file-label">选择 PDF / TXT<input id="paper-file" type="file" accept=".pdf,.txt,application/pdf,text/plain" hidden ${busy?'disabled':''}></label><button class="mini" id="paste-material" ${busy?'disabled':''}>粘贴文字或自写笔记</button></div><p class="small" id="import-status" role="status">单文件上限 20 MB，PDF 最多解析前 30 页。可多次导入不同片段。</p><div id="draft-form"></div></section><section class="card studio-section"><h2>我的私人素材 <span class="pill">${state.materials.length} 篇</span></h2>${state.materials.length?state.materials.map(m=>`<div class="studio-material"><div><strong>${E(m.title)}</strong><p class="small">${E(m.author)} · ${E(m.topic)} · ${E(m.location)}<br>${E(m.modes.join(' / '))}</p></div><div class="studio-actions"><button class="mini" data-open-paper="${E(m.id)}">练习</button><button class="mini" data-delete-paper="${E(m.id)}">删除</button></div></div>`).join(''):'<p class="empty">你的素材只属于你。先导入一篇，选取一段，再开始练习。</p>'}</section>`;
   }
   const modes=['论文介绍','会议问答','术语精读'];
   const prompts={
@@ -78,7 +78,13 @@
     const m=state.materials.find(x=>x.id===selectedMaterial?.id);
     if(!m)return heading('私人素材','素材不存在','可能已被删除，请回素材库重新选择。');
     const mode=selectedMaterial.mode, id=m.id+'-'+mode;
-    return heading('私人素材 · '+E(mode),E(m.title),'以下是通用练习问题，不是 AI 对论文的分析。仅依据片段回答，缺失的信息请注明“片段未提供”。')+`<section class="card studio-section"><label>练习方式 <select id="paper-mode">${m.modes.map(x=>`<option ${x===mode?'selected':''}>${x}</option>`).join('')}</select></label><p class="small">${E(m.author)} · ${E(m.location)} · ${E(m.source||'未填写 DOI / 来源')} · ${E(m.license)}</p><details open><summary>查看你选取的原文片段</summary><p class="studio-excerpt">${E(m.excerpt)}</p></details><button class="mini" id="read-excerpt">朗读片段</button><p class="small">设备合成语音；复杂公式和专业术语的读音可能不准确。</p>${prompts[mode].map(([en,zh])=>`<div class="line"><strong>${en}</strong><p class="zh">${zh}</p></div>`).join('')}<label for="paper-answer"><h2>我的表达与术语笔记</h2></label><textarea id="paper-answer" maxlength="12000" placeholder="用英文概括，或先写关键词；把你的理解与作者原文区分开。">${E(state.answers[id]||'')}</textarea><div class="studio-actions"><button class="mini" id="save-paper-answer">保存回答</button><button class="primary" id="finish-paper">完成这条练习 ✓</button><button class="mini" id="back-library">返回素材库</button></div></section>`;
+    const exercises=m.study?.exercises?.[mode];
+    const studyContent=m.study?studyView(m,mode):'';
+    return heading('私人素材 · '+E(mode),E(m.title),m.study?'先看中文导读，再练英文表达。参考回答为学习用改写；请结合标注页码核对原论文，区分观察、模型解释与研究启发。':'以下是通用练习问题，不是 AI 对论文的分析。仅依据片段回答，缺失的信息请注明“片段未提供”。')+`<section class="card studio-section"><label>练习方式 <select id="paper-mode">${m.modes.map(x=>`<option ${x===mode?'selected':''}>${x}</option>`).join('')}</select></label><p class="small">${E(m.author)} · ${E(m.location)} · ${E(m.source||'未填写 DOI / 来源')} · ${E(m.license)}</p>${studyContent}${m.excerpt?`<details open><summary>查看你选取的原文片段</summary><p class="studio-excerpt">${E(m.excerpt)}</p></details><button class="mini" id="read-excerpt">朗读片段</button><p class="small">设备合成语音；复杂公式和专业术语的读音可能不准确。</p>`:''}${exercises?'':prompts[mode].map(([en,zh])=>`<div class="line"><strong>${en}</strong><p class="zh">${zh}</p></div>`).join('')}<label for="paper-answer"><h2>我的表达与术语笔记</h2></label><textarea id="paper-answer" maxlength="12000" placeholder="用英文概括，或先写关键词；把你的理解与作者原文区分开。">${E(state.answers[id]||'')}</textarea><div class="studio-actions"><button class="mini" id="save-paper-answer">保存回答</button><button class="primary" id="finish-paper">完成这条练习 ✓</button><button class="mini" id="back-library">返回素材库</button></div></section>`;
+  }
+  function studyView(m,mode) {
+    const s=m.study;
+    return `<section class="studio-section"><span class="pill">中文先读</span><h2>一分钟导读</h2><p class="studio-reading">${E(s.summary)}</p><details><summary>看懂方法、数据与边界</summary>${s.sections.map(x=>`<h3>${E(x.heading)}</h3><p class="studio-reading">${E(x.text)}</p><p class="small">${E(x.location)}</p>`).join('')}</details></section><details class="studio-section"><summary>重点句翻译（含原文位置）</summary>${s.translations.map(x=>`<div class="line"><p class="en">${E(x.en)}</p><p class="zh">${E(x.zh)}</p><p class="small">${E(x.location)}</p></div>`).join('')}</details><details class="studio-section"><summary>核心术语</summary>${s.terms.map(x=>`<div class="line"><strong>${E(x.en)} · ${E(x.zh)}</strong><p class="zh">${E(x.note)}</p></div>`).join('')}</details><h2>今天只练这一条</h2>${s.exercises[mode].map((x,i)=>`<div class="line"><p class="en"><strong>${E(x.en)}</strong></p><p class="zh">${E(x.zh)}</p><p class="tip">${E(x.hint)}</p><details><summary>需要帮助时看参考表达</summary><p class="en">${E(x.model_en)}</p><p class="zh">${E(x.model_zh)}</p><button class="mini" data-read-model="${i}">听参考表达</button></details><p class="small">${E(x.location)}</p></div>`).join('')}`;
   }
   render=function() {
     if(!['plan','settings','library','paper'].includes(tab)){baseRender();updateProgress();return;}
@@ -144,6 +150,28 @@
       state.prefs=Object.fromEntries(topics.map((t,i)=>[t,{on:f.has('topic-'+i),count:Math.min(10,Math.max(1,Number(f.get('count-'+i))||1))}]));
       if(!save()){state.prefs=prior;return;}go('plan');toast('今日计划已更新');
     });
+    $('#pack-file')?.addEventListener('change',async e=>{
+      const box=$('#pack-preview');
+      try {
+        pendingPack=null;const file=e.target.files[0];if(!file)return;
+        if(file.size>1024*1024)throw Error('学习包不能超过 1 MB');
+        pendingPack=YunaLearningPack.parse(JSON.parse(await file.text()),topics);
+        const added=pendingPack.materials.filter(m=>!state.materials.some(x=>x.id===m.id));
+        if(state.materials.length+added.length>100)throw Error('导入后超过 100 篇素材上限');
+        box.innerHTML=`<div class="tip"><strong>${E(pendingPack.title)}</strong><p>新增 ${added.length} 篇素材 / ${added.reduce((n,m)=>n+m.modes.length,0)} 条练习；已存在 ${pendingPack.materials.length-added.length} 篇，自动跳过。仅本机保存，不代表获得原作再传播许可。</p>${added.length?'<button class="primary" id="confirm-pack">确认导入</button>':'无需重复导入。'}</div>`;
+        $('#confirm-pack')?.addEventListener('click',()=>{
+          const prior=state.materials;
+          state.materials=[...state.materials,...added];
+          if(!save()){state.materials=prior;return;}
+          pendingPack=null;render();toast('学习包已导入，点击素材的“练习”即可开始。');
+        });
+      }catch(err){pendingPack=null;box.textContent='导入失败：'+err.message;}
+      finally{e.target.value='';}
+    });
+    document.querySelectorAll('[data-read-model]').forEach(b=>b.onclick=()=>{
+      const m=state.materials.find(x=>x.id===selectedMaterial.id);
+      say(m.study.exercises[selectedMaterial.mode][Number(b.dataset.readModel)].model_en);
+    });
     $('#paper-file')?.addEventListener('change',e=>importFile(e.target.files[0]));
     $('#paste-material')?.addEventListener('click',()=>{if(!$('#rights').checked){toast('请先确认素材使用权限。');return;}draft={title:'',location:'粘贴片段 / 自写笔记',text:''};showDraft();});
     document.querySelectorAll('[data-open-paper]').forEach(b=>b.onclick=()=>{const m=state.materials.find(x=>x.id===b.dataset.openPaper);selectedMaterial={id:m.id,mode:m.modes[0]};go('paper');});
@@ -168,6 +196,7 @@
         const b=JSON.parse(await file.text()), s=b.studio;
         if(b.version!==1||!s||!Array.isArray(s.materials)||s.materials.length>100||!s.prefs||!s.done||!s.answers)throw new Error('不是有效的学习备份');
         for(const m of s.materials)if(!['id','title','author','source','location','topic','license','excerpt'].every(k=>typeof m[k]==='string')||m.excerpt.length>3000||!topics.includes(m.topic)||!Array.isArray(m.modes)||!m.modes.length||m.modes.some(x=>!modes.includes(x)))throw new Error('素材内容格式不正确');
+        s.materials=s.materials.map(m=>YunaLearningPack.material(m,topics));
         if(new Set(s.materials.map(m=>m.id)).size!==s.materials.length||s.materials.some(m=>new Set(m.modes).size!==m.modes.length))throw new Error('备份中有重复素材或练习');
         for(const t of topics)if(typeof s.prefs[t]?.on!=='boolean'||!Number.isInteger(s.prefs[t]?.count)||s.prefs[t].count<1||s.prefs[t].count>10)throw new Error('话题设置格式不正确');
         if(Object.values(s.done).some(x=>!Array.isArray(x)||x.some(y=>typeof y!=='string'))||Object.values(s.answers).some(x=>typeof x!=='string'||x.length>12000))throw new Error('练习数据格式不正确');
