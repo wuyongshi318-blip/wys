@@ -21,6 +21,11 @@ lessons.push(...[
         "我到咖啡馆外面时会给你发消息。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What is the new meeting time?",
     "options": [
       "6:10",
@@ -60,6 +65,11 @@ lessons.push(...[
         "Let's leave the laundry until tomorrow because it's raining.",
         "下雨了，衣服留到明天再洗吧。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Which job will the second speaker do now?",
     "options": [
@@ -101,6 +111,11 @@ lessons.push(...[
         "你能顺路买点鸡蛋吗？只缺这个了。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What do they need to buy?",
     "options": [
       "Rice",
@@ -140,6 +155,11 @@ lessons.push(...[
         "I'll have tap water rather than a soft drink.",
         "我喝自来水就好，不要汽水。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What change does the customer request?",
     "options": [
@@ -181,6 +201,11 @@ lessons.push(...[
         "如果不能确定，我就选别的。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What does the customer need checked?",
     "options": [
       "The price of the dish",
@@ -220,6 +245,11 @@ lessons.push(...[
         "My friend will pay for the noodles and the tea.",
         "我朋友会付面和茶的钱。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What will the second speaker pay for?",
     "options": [
@@ -261,6 +291,11 @@ lessons.push(...[
         "我已经买了面包，不用再买了。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What should they avoid buying again?",
     "options": [
       "Bread",
@@ -300,6 +335,11 @@ lessons.push(...[
         "I've brought the receipt. Could I exchange it for one that works?",
         "我带了小票。可以换一个能用的吗？"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What does the customer want?",
     "options": [
@@ -341,6 +381,11 @@ lessons.push(...[
         "请不要放在楼外。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Where should the parcel be left?",
     "options": [
       "Outside the building",
@@ -380,6 +425,11 @@ lessons.push(...[
         "Could someone come on Friday afternoon? I'll be home then.",
         "能安排人周五下午来吗？那时我在家。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "When is the tenant available?",
     "options": [
@@ -421,6 +471,11 @@ lessons.push(...[
         "能稍微调小一点吗？我明天得早起。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Why does the speaker ask for quieter music?",
     "options": [
       "A broken speaker",
@@ -460,6 +515,11 @@ lessons.push(...[
         "If he's busy, could you ask him to call me back this afternoon?",
         "如果他在忙，能请他今天下午给我回电话吗？"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What is the call about?",
     "options": [
@@ -501,6 +561,11 @@ lessons.push(...[
         "我们只用语音继续吧。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What do they decide to use?",
     "options": [
       "Audio only",
@@ -540,6 +605,11 @@ lessons.push(...[
         "I'll let you know this evening whether I can come tomorrow.",
         "我今晚会告诉你明天能不能来。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "When will the speaker give another update?",
     "options": [
@@ -581,6 +651,11 @@ lessons.push(...[
         "我已经在吃一些药，所以想先确认再买。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Who does the customer want to speak to?",
     "options": [
       "The cashier's manager",
@@ -620,6 +695,11 @@ lessons.push(...[
         "I can still walk, but I've stopped running for now.",
         "我还可以走路，但暂时不跑步了。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What makes the pain worse?",
     "options": [
@@ -661,6 +741,11 @@ lessons.push(...[
         "两点以后我都可以。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "When can the customer come?",
     "options": [
       "Tuesday before noon",
@@ -700,6 +785,11 @@ lessons.push(...[
         "I'll stay here so the emergency team can find us.",
         "我会待在这里，方便急救人员找到我们。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Where is help needed?",
     "options": [
@@ -741,6 +831,11 @@ lessons.push(...[
         "我们可以在这里看电影，叫份晚餐。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What does the speaker prefer?",
     "options": [
       "Staying at home",
@@ -780,6 +875,11 @@ lessons.push(...[
         "Please leave it on my desk when you're done.",
         "用完后请放在我桌上。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Where should the charger be returned?",
     "options": [
@@ -821,6 +921,11 @@ lessons.push(...[
         "课从 201 换到这里了，注意看门上的号码。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Which room is the class in now?",
     "options": [
       "201",
@@ -860,6 +965,11 @@ lessons.push(...[
         "The teacher also put the slides on the course website.",
         "老师也把幻灯片放在课程网站上了。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "When will the notes be sent?",
     "options": [
@@ -901,6 +1011,11 @@ lessons.push(...[
         "两个版本都要上传，不用打印。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "When is the final version due?",
     "options": [
       "Thursday",
@@ -940,6 +1055,11 @@ lessons.push(...[
         "Let's write the conclusion together after we've finished our parts.",
         "各自部分做完后，我们一起写结尾。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Which part will they write together?",
     "options": [
@@ -981,6 +1101,11 @@ lessons.push(...[
         "我为我们组订好了，一点五十五在外面见吧。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "When should the group meet?",
     "options": [
       "1:55",
@@ -1020,6 +1145,11 @@ lessons.push(...[
         "If there is a request, you'll need to bring it back by Friday.",
         "如果有人预约，你需要周五前归还。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What can prevent renewal?",
     "options": [
@@ -1061,6 +1191,11 @@ lessons.push(...[
         "按打印前可以看一下预览。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What printing setting is suggested?",
     "options": [
       "Colour only",
@@ -1100,6 +1235,11 @@ lessons.push(...[
         "Try moving the last example to the next section.",
         "试着把最后一个例子移到下一节。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What needs shortening?",
     "options": [
@@ -1141,6 +1281,11 @@ lessons.push(...[
         "如果能写在黑板上会有帮助。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Which part needs explaining?",
     "options": [
       "The first example",
@@ -1180,6 +1325,11 @@ lessons.push(...[
         "We can check the structure before you write more.",
         "我们可以先检查结构，再继续写。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What should the student bring?",
     "options": [
@@ -1221,6 +1371,11 @@ lessons.push(...[
         "可以先注意时间，之后再练发音。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What will they focus on first?",
     "options": [
       "Timing",
@@ -1260,6 +1415,11 @@ lessons.push(...[
         "That helps the teacher find your email and understand what you need.",
         "这样老师容易找到邮件，也知道你需要什么。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What belongs in the subject line?",
     "options": [
@@ -1301,6 +1461,11 @@ lessons.push(...[
         "我今天下午会用图书馆的电脑上传。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "How will the work be uploaded?",
     "options": [
       "Using a phone tomorrow",
@@ -1340,6 +1505,11 @@ lessons.push(...[
         "We can share the cleaning at the weekend.",
         "周末可以一起打扫。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "When should dishes be washed?",
     "options": [
@@ -1381,6 +1551,11 @@ lessons.push(...[
         "进来时带上学生证。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What needs a booking?",
     "options": [
       "The exercise area",
@@ -1420,6 +1595,11 @@ lessons.push(...[
         "It's usually quieter if we go before twelve.",
         "十二点前去通常人少些。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "When is the cafe usually quieter?",
     "options": [
@@ -1461,6 +1641,11 @@ lessons.push(...[
         "在他们确认前，不要认为截止时间已经改了。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Who should the student contact?",
     "options": [
       "The course office",
@@ -1500,6 +1685,11 @@ lessons.push(...[
         "Then I'll spend more time on the questions I get wrong.",
         "之后我会多看做错的题。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What will the speaker do tomorrow?",
     "options": [
@@ -1541,6 +1731,11 @@ lessons.push(...[
         "那里比大路安静，九点前就能回来。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Which route do they choose?",
     "options": [
       "The main road",
@@ -1580,6 +1775,11 @@ lessons.push(...[
         "Let's check whether it has English subtitles.",
         "看看有没有英文字幕吧。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What kind of film does the speaker prefer?",
     "options": [
@@ -1621,6 +1821,11 @@ lessons.push(...[
         "两个挨着的座位就好。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Where do they want to sit?",
     "options": [
       "At the very front",
@@ -1660,6 +1865,11 @@ lessons.push(...[
         "We can get coffee nearby afterwards.",
         "之后可以在附近喝咖啡。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Where will they go instead of the park?",
     "options": [
@@ -1701,6 +1911,11 @@ lessons.push(...[
         "我没有球拍，需要借一个。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What does the speaker need to borrow?",
     "options": [
       "A racket",
@@ -1740,6 +1955,11 @@ lessons.push(...[
         "Bring water and comfortable shoes. We won't be climbing any steep hills.",
         "带水，穿舒服的鞋。这次不爬陡坡。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "How long does the walk take?",
     "options": [
@@ -1781,6 +2001,11 @@ lessons.push(...[
         "要不要再拍一张竖着的？"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What will be in the background?",
     "options": [
       "A mountain",
@@ -1820,6 +2045,11 @@ lessons.push(...[
         "I usually walk around once before deciding what to buy.",
         "我通常先逛一圈，再决定买什么。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What does the speaker usually do first?",
     "options": [
@@ -1861,6 +2091,11 @@ lessons.push(...[
         "Maya 带饮料，这样就齐了。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What should the first speaker bring?",
     "options": [
       "Sandwiches",
@@ -1900,6 +2135,11 @@ lessons.push(...[
         "That gives us time to find our seats.",
         "这样有时间找座位。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "When do they plan to arrive?",
     "options": [
@@ -1941,6 +2181,11 @@ lessons.push(...[
         "你来之前我会准备好馅。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What does the speaker want to learn?",
     "options": [
       "How to fold dumplings",
@@ -1980,6 +2225,11 @@ lessons.push(...[
         "I've moved this one out of direct sunlight.",
         "我把这一盆移到了没有阳光直晒的地方。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What does the speaker check before watering?",
     "options": [
@@ -2021,6 +2271,11 @@ lessons.push(...[
         "可以住一晚，周日下午回来。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "How do they prefer to travel?",
     "options": [
       "By car",
@@ -2060,6 +2315,11 @@ lessons.push(...[
         "You can check the pool's rules about swimming caps at reception.",
         "泳帽要求可以到前台问一下。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What is the coin for?",
     "options": [
@@ -2101,6 +2361,11 @@ lessons.push(...[
         "我喜欢十五分钟左右的一期，刚好适合路程。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Why does the speaker prefer short episodes?",
     "options": [
       "They have no speech",
@@ -2140,6 +2405,11 @@ lessons.push(...[
         "I'd like to go back and see the paintings before we leave.",
         "离开前我想回去看看画作。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Which section has the speaker spent most time in?",
     "options": [
@@ -2181,6 +2451,11 @@ lessons.push(...[
         "不用一下子记住所有规则。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "How will the rules be explained?",
     "options": [
       "By demonstrating one round",
@@ -2220,6 +2495,11 @@ lessons.push(...[
         "Sometimes I draw for ten minutes while I'm waiting for the bus.",
         "有时候等公交时画十分钟。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "When does the speaker sometimes draw?",
     "options": [
@@ -2261,6 +2541,11 @@ lessons.push(...[
         "今天下午很开心。我们改天再约吧。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Why does the speaker leave?",
     "options": [
       "The cafe is too noisy",
@@ -2300,6 +2585,11 @@ lessons.push(...[
         "We record their movement under a microscope and look for patterns.",
         "我们在显微镜下记录它们的运动，寻找规律。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What does the researcher study?",
     "options": [
@@ -2341,6 +2631,11 @@ lessons.push(...[
         "请留出时间，在下个人来之前清理好。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "When does their booking start?",
     "options": [
       "Nine",
@@ -2380,6 +2675,11 @@ lessons.push(...[
         "I'd like to practise with a test sample before using the real one.",
         "我想先用测试样品练习，再用正式样品。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What help is requested?",
     "options": [
@@ -2421,6 +2721,11 @@ lessons.push(...[
         "用之前先核对一下实验记录。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Which label is on today's sample?",
     "options": [
       "White",
@@ -2460,6 +2765,11 @@ lessons.push(...[
         "I can show those today and send the rest tomorrow.",
         "今天可以展示这些，其余的明天发。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "When will the remaining results be sent?",
     "options": [
@@ -2501,6 +2811,11 @@ lessons.push(...[
         "速度先上升，之后基本保持不变。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What does the vertical axis show?",
     "options": [
       "Time",
@@ -2540,6 +2855,11 @@ lessons.push(...[
         "We need more measurements before we draw a firm conclusion.",
         "下明确结论前还需要更多测量。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Why are more measurements needed?",
     "options": [
@@ -2581,6 +2901,11 @@ lessons.push(...[
         "我会先检查设置并重复测量，再考虑改方法。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What will the researcher check first?",
     "options": [
       "The journal title",
@@ -2620,6 +2945,11 @@ lessons.push(...[
         "Please keep the original file unchanged and work on a copy.",
         "请保留原文件不变，在副本上处理。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Which file should be edited?",
     "options": [
@@ -2661,6 +2991,11 @@ lessons.push(...[
         "下周先人工核查轨迹，再比较各组。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What is planned for next week first?",
     "options": [
       "Checking the tracks",
@@ -2700,6 +3035,11 @@ lessons.push(...[
         "I'm interested in whether the same method would work at a lower rate.",
         "我想了解这个方法在更低流量下是否适用。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What does the question concern?",
     "options": [
@@ -2741,6 +3081,11 @@ lessons.push(...[
         "不是整段录像的长度。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What does residence time refer to here?",
     "options": [
       "The total recording time",
@@ -2780,6 +3125,11 @@ lessons.push(...[
         "We would need a separate test to check that explanation.",
         "需要单独的实验来检验这个解释。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What does the researcher say about causation?",
     "options": [
@@ -2821,6 +3171,11 @@ lessons.push(...[
         "试用前我想再仔细读一下方法部分。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What will the reader examine more carefully?",
     "options": [
       "Only the title",
@@ -2860,6 +3215,11 @@ lessons.push(...[
         "A draft is fine. We can discuss the details together on Friday.",
         "初稿就可以，细节周五一起讨论。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What version is acceptable now?",
     "options": [
@@ -2901,6 +3261,11 @@ lessons.push(...[
         "我会放大一些，让人稍远一点也能看清。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What should be made bigger?",
     "options": [
       "The labels on figure two",
@@ -2940,6 +3305,11 @@ lessons.push(...[
         "That will help us compare the runs later.",
         "这样以后方便比较各次实验。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What should be recorded besides routine details?",
     "options": [
@@ -2981,6 +3351,11 @@ lessons.push(...[
         "排除任何数据都应在方法里说明清楚。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What does the speaker suggest doing first?",
     "options": [
       "Deleting all the data",
@@ -3020,6 +3395,11 @@ lessons.push(...[
         "Let's bring both updates to the meeting on Tuesday.",
         "我们把两方面的进展带到周二会议上。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Who will check the script?",
     "options": [
@@ -3061,6 +3441,11 @@ lessons.push(...[
         "下去之前再看看发车显示屏。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Which platform is being used today?",
     "options": [
       "Four",
@@ -3100,6 +3485,11 @@ lessons.push(...[
         "The stop is called Park Road, not Hospital Road.",
         "站名是 Park Road，不是 Hospital Road。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What is the stop called?",
     "options": [
@@ -3141,6 +3531,11 @@ lessons.push(...[
         "能告诉我是否需要订座吗？"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "When is the return journey?",
     "options": [
       "Sunday evening",
@@ -3180,6 +3575,11 @@ lessons.push(...[
         "It's beside the bakery, opposite the bank.",
         "在面包店旁边，银行对面。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What is opposite the post office?",
     "options": [
@@ -3221,6 +3621,11 @@ lessons.push(...[
         "正门正在维修，司机不能在那里停。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Where is the pickup point?",
     "options": [
       "The main entrance",
@@ -3260,6 +3665,11 @@ lessons.push(...[
         "The entrance is around the back, beside the bicycle racks.",
         "入口在后面，自行车架旁。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What is the flat number?",
     "options": [
@@ -3301,6 +3711,11 @@ lessons.push(...[
         "预约应该登记在我的姓氏下。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Which surname is given?",
     "options": [
       "Lamb",
@@ -3340,6 +3755,11 @@ lessons.push(...[
         "Please send the confirmation by text rather than calling.",
         "请发短信确认，不用打电话。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What are the last four digits?",
     "options": [
@@ -3381,6 +3801,11 @@ lessons.push(...[
         "周末晚一小时结束，到十点半。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "When does breakfast finish at weekends?",
     "options": [
       "10:30",
@@ -3420,6 +3845,11 @@ lessons.push(...[
         "Registration is still at the main entrance.",
         "签到还是在正门。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Where is the workshop now?",
     "options": [
@@ -3461,6 +3891,11 @@ lessons.push(...[
         "不用在楼下付款队伍里排队。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What should the customer bring?",
     "options": [
       "A paper catalogue",
@@ -3500,6 +3935,11 @@ lessons.push(...[
         "The guided tour costs another three pounds.",
         "导览另加三英镑。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "How much is a student ticket without the tour?",
     "options": [
@@ -3541,6 +3981,11 @@ lessons.push(...[
         "可以的话我想要同一个颜色。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What does the customer want?",
     "options": [
       "A smaller size",
@@ -3580,6 +4025,11 @@ lessons.push(...[
         "I left it on the bus about an hour ago.",
         "我大约一小时前落在公交车上了。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What colour is the zip?",
     "options": [
@@ -3621,6 +4071,11 @@ lessons.push(...[
         "明天早上正常时间开门。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "When does the business close today?",
     "options": [
       "Four",
@@ -3660,6 +4115,11 @@ lessons.push(...[
         "They asked us to call back only if that time doesn't work.",
         "他们说只有这个时间不合适才需要回电话。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "When should the customer call back?",
     "options": [
@@ -3701,6 +4161,11 @@ lessons.push(...[
         "起飞时间没变。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Which gate should the traveller use?",
     "options": [
       "Eighty",
@@ -3740,6 +4205,11 @@ lessons.push(...[
         "If you're a new patient, please arrive ten minutes early.",
         "如果是新病人，请提前十分钟到。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "How early should a new patient arrive?",
     "options": [
@@ -3781,6 +4251,11 @@ lessons.push(...[
         "付款前可以核对一下账单吗？"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What does the customer question?",
     "options": [
       "The room number",
@@ -3820,6 +4295,11 @@ lessons.push(...[
         "I understood the meeting place, but I missed the time.",
         "地点我听懂了，但没听清时间。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Which detail did the listener miss?",
     "options": [
@@ -3861,6 +4341,11 @@ lessons.push(...[
         "能再说一遍最后一句吗？"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What needs repeating?",
     "options": [
       "The last sentence",
@@ -3900,6 +4385,11 @@ lessons.push(...[
         "Could you give me an example so I can remember it?",
         "能举个例子让我好记一些吗？"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What does the learner think refund means?",
     "options": [
@@ -3941,6 +4431,11 @@ lessons.push(...[
         "举个生活里的例子会有帮助。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What would help the listener?",
     "options": [
       "A faster explanation",
@@ -3980,6 +4475,11 @@ lessons.push(...[
         "And I should bring my passport. Have I got that right?",
         "还要带护照。我理解得对吗？"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Where is the meeting point?",
     "options": [
@@ -4021,6 +4521,11 @@ lessons.push(...[
         "一般放在厨房抽屉里。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What is the speaker looking for?",
     "options": [
       "A spoon",
@@ -4060,6 +4565,11 @@ lessons.push(...[
         "It's Tuesday at ten. I'll send you the details in writing.",
         "是周二十点。我会把信息写下来发给你。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "When is the meeting?",
     "options": [
@@ -4101,6 +4611,11 @@ lessons.push(...[
         "我再读一次，你可以跟着试试。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Where should the stress be?",
     "options": [
       "On the first part",
@@ -4140,6 +4655,11 @@ lessons.push(...[
         "Then I try to use it myself the next day.",
         "然后第二天试着自己用一次。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What does the learner write down?",
     "options": [
@@ -4181,6 +4701,11 @@ lessons.push(...[
         "你呢？做什么开心的事了吗？"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What did the speaker try?",
     "options": [
       "A new train route",
@@ -4220,6 +4745,11 @@ lessons.push(...[
         "I suppose the main reason was the university, but I also liked the atmosphere.",
         "我想主要是因为大学，不过我也喜欢这里的氛围。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What was the main reason for choosing the city?",
     "options": [
@@ -4261,6 +4791,11 @@ lessons.push(...[
         "有人在等你时可以这样说。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "When is the suggested phrase useful?",
     "options": [
       "When ordering a drink",
@@ -4300,6 +4835,11 @@ lessons.push(...[
         "I only replay the short parts I couldn't understand.",
         "我只重放没听懂的短片段。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What does the learner do first?",
     "options": [
@@ -4341,6 +4881,11 @@ lessons.push(...[
         "她重复地址后我就听懂了。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What caused the difficulty?",
     "options": [
       "An unfamiliar accent",
@@ -4380,6 +4925,11 @@ lessons.push(...[
         "Let's practise booking a table and checking the time.",
         "我们练习订桌并确认时间吧。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Which situation will they practise?",
     "options": [
@@ -4421,6 +4971,11 @@ lessons.push(...[
         "发条短信就很好。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What does the listener ask for?",
     "options": [
       "A longer spoken explanation",
@@ -4460,6 +5015,11 @@ lessons.push(...[
         "Try keeping the same volume until the end.",
         "试着到最后都保持同样的音量。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What should the learner work on?",
     "options": [
@@ -4501,6 +5061,11 @@ lessons.push(...[
         "忘了的话就看看笔记，再试一次。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "When will the learner use the phrase?",
     "options": [
       "During a written exam",
@@ -4540,6 +5105,11 @@ lessons.push(...[
         "I'd like to get better at keeping a conversation going.",
         "我想更擅长把对话聊下去。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What has become easier?",
     "options": [
@@ -4581,6 +5151,11 @@ lessons.push(...[
         "有周六上午的课就更好了。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Which time would the speaker prefer?",
     "options": [
       "Saturday morning",
@@ -4620,6 +5195,11 @@ lessons.push(...[
         "The trial costs five pounds, which comes off the term fee if you join.",
         "试听五英镑，报名的话可以抵学期费用。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What can the learner do first?",
     "options": [
@@ -4661,6 +5241,11 @@ lessons.push(...[
         "所以先练问候和接着问问题。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What is the main goal?",
     "options": [
       "Memorising a dictionary",
@@ -4700,6 +5285,11 @@ lessons.push(...[
         "Let's compare the total cost, not just the price on the front page.",
         "比较总费用吧，别只看首页价格。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What should they compare?",
     "options": [
@@ -4741,6 +5331,11 @@ lessons.push(...[
         "我可能选附近的一门晚课，课间在线练习。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What is an advantage of a classroom for the speaker?",
     "options": [
       "No travel time",
@@ -4780,6 +5375,11 @@ lessons.push(...[
         "I'll do a little each day and a longer session on Sunday.",
         "每天学一点，周日再多学一会儿。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "How much weekday study time is realistic?",
     "options": [
@@ -4821,6 +5421,11 @@ lessons.push(...[
         "餐厅投诉留到别的日子吧。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Which topic is chosen for now?",
     "options": [
       "Airport pickup",
@@ -4860,6 +5465,11 @@ lessons.push(...[
         "I'd rather practise that before moving to a harder lesson.",
         "我想先练好这个，再学更难的课。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What was difficult?",
     "options": [
@@ -4901,6 +5511,11 @@ lessons.push(...[
         "如果确实经常用，再考虑月付。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What will the speaker do before paying?",
     "options": [
       "Buy a yearly plan",
@@ -4940,6 +5555,11 @@ lessons.push(...[
         "I'd like a chance to ask questions rather than just listen.",
         "我想有机会提问，而不只是听。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What matters most to the learner?",
     "options": [
@@ -4981,6 +5601,11 @@ lessons.push(...[
         "现在我练短对话，把细节换成自己的生活。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Why was the old method unhelpful?",
     "options": [
       "The words were too large to read",
@@ -5020,6 +5645,11 @@ lessons.push(...[
         "I'll keep the other practice short until that's done.",
         "做完这个之前，其他练习就简短一些。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What is the priority this week?",
     "options": [
@@ -5061,6 +5691,11 @@ lessons.push(...[
         "口音不必相同，但需要互相认真听。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Which quality matters to the speaker?",
     "options": [
       "Turning up regularly",
@@ -5100,6 +5735,11 @@ lessons.push(...[
         "I need more practice asking someone to clarify a point.",
         "我还需要多练请人解释清楚一个点。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What needs more practice?",
     "options": [
@@ -5141,6 +5781,11 @@ lessons.push(...[
         "也问问能不能换到另一个班。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What should be checked before payment?",
     "options": [
       "Only the room colour",
@@ -5180,6 +5825,11 @@ lessons.push(...[
         "I can do the new lesson tomorrow when I'm more awake.",
         "明天精神好些再学新课。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What will the learner do tonight?",
     "options": [
@@ -5221,6 +5871,11 @@ lessons.push(...[
         "多做练习有用，但我也想在课外用出来。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What real task will show progress?",
     "options": [
       "Opening the app once",
@@ -5260,6 +5915,11 @@ lessons.push(...[
         "Ten minutes on the train is enough. I don't want a strict holiday timetable.",
         "火车上十分钟就够了，我不想给假期排严格时间表。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "When might the speaker study?",
     "options": [
@@ -5301,6 +5961,11 @@ lessons.push(...[
         "每几个词就打断的话，我会忘记想说什么。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "When does the learner want corrections?",
     "options": [
       "After finishing",
@@ -5340,6 +6005,11 @@ lessons.push(...[
         "I'll send the flight number as well so you can check for delays.",
         "我也会发航班号，方便你查是否延误。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Which terminal will the guest arrive at?",
     "options": [
@@ -5381,6 +6051,11 @@ lessons.push(...[
         "我会举着写有你名字的牌子。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Where will the host wait?",
     "options": [
       "At the departure gate",
@@ -5420,6 +6095,11 @@ lessons.push(...[
         "Thanks for coming to meet me. It's nice to meet you in person.",
         "谢谢你来接我。很高兴能当面认识你。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Where is Lin from?",
     "options": [
@@ -5461,6 +6141,11 @@ lessons.push(...[
         "明天开会前，今晚能安静休息就很好。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What would the guest prefer tonight?",
     "options": [
       "A late party",
@@ -5500,6 +6185,11 @@ lessons.push(...[
         "There's nothing fragile in the suitcase.",
         "箱子里没有易碎品。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Which bag can the host take?",
     "options": [
@@ -5541,6 +6231,11 @@ lessons.push(...[
         "车里有水。路上想停一下就告诉我。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "How long is the expected drive?",
     "options": [
       "About forty minutes",
@@ -5580,6 +6275,11 @@ lessons.push(...[
         "A light meal later would be perfect.",
         "晚些时候吃点清淡的就好。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What would the guest like to do first?",
     "options": [
@@ -5621,6 +6321,11 @@ lessons.push(...[
         "能帮我确认是否包含早餐吗？"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What does the guest want checked?",
     "options": [
       "The airline seat",
@@ -5660,6 +6365,11 @@ lessons.push(...[
         "I'd be happy to try some local vegetarian dishes.",
         "我很愿意尝尝本地素菜。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Which food is acceptable to the guest?",
     "options": [
@@ -5701,6 +6411,11 @@ lessons.push(...[
         "我想问问她之前邮件里讨论的项目。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "When does the guest want an introduction?",
     "options": [
       "After the flight home",
@@ -5740,6 +6455,11 @@ lessons.push(...[
         "If it's in use, we can just look from outside.",
         "如果里面有人在用，在外面看看也行。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What does the guest especially want to see?",
     "options": [
@@ -5781,6 +6501,11 @@ lessons.push(...[
         "午饭后和研究团队进行小范围讨论。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What happens after lunch?",
     "options": [
       "A smaller team discussion",
@@ -5820,6 +6545,11 @@ lessons.push(...[
         "We'll keep the introductions brief so there's plenty of time for discussion.",
         "介绍尽量简短，留足讨论时间。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Why will introductions be brief?",
     "options": [
@@ -5861,6 +6591,11 @@ lessons.push(...[
         "较长的讨论留到最后吧。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "When should longer discussions take place?",
     "options": [
       "Before every slide",
@@ -5900,6 +6635,11 @@ lessons.push(...[
         "Let's take one short question, then continue the discussion over lunch.",
         "再来一个简短问题吧，然后午餐时继续聊。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Where can the discussion continue?",
     "options": [
@@ -5941,6 +6681,11 @@ lessons.push(...[
         "我会介绍食材；你愿意的话，也可以请店家少放辣椒。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Why order several dishes?",
     "options": [
       "To take everything home",
@@ -5980,6 +6725,11 @@ lessons.push(...[
         "Different families do things differently, so you don't need to guess.",
         "每家习惯不同，不必自己猜。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What is the visitor advised to do?",
     "options": [
@@ -6021,6 +6771,11 @@ lessons.push(...[
         "这里仍有人居住，住宅附近我们说话小声点。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Why should visitors keep their voices down?",
     "options": [
       "People live nearby",
@@ -6060,6 +6815,11 @@ lessons.push(...[
         "I'd rather not fit too much in, since I need to pack tonight.",
         "我不想排太满，今晚还得收拾行李。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Why does the guest want a light schedule?",
     "options": [
@@ -6101,6 +6861,11 @@ lessons.push(...[
         "回去后我会发幻灯片，希望保持联系。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What will the guest send after returning?",
     "options": [
       "A hotel key",
@@ -6140,6 +6905,11 @@ lessons.push(...[
         "Is this your first time here too?",
         "你也是第一次来吗？"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Which group has Sam joined?",
     "options": [
@@ -6181,6 +6951,11 @@ lessons.push(...[
         "如果我叫错你的名字，也请告诉我。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What name does the speaker prefer?",
     "options": [
       "A formal title only",
@@ -6220,6 +6995,11 @@ lessons.push(...[
         "How about you? Did you meet through work as well?",
         "你呢？也是工作时认识的吗？"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "How did the speaker meet the host?",
     "options": [
@@ -6261,6 +7041,11 @@ lessons.push(...[
         "我还在慢慢找这个街区里自己喜欢的地方。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "When did the speaker move here?",
     "options": [
       "Last spring",
@@ -6300,6 +7085,11 @@ lessons.push(...[
         "I try to get outside for a walk in the evenings.",
         "晚上尽量出来散散步。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What does the speaker do?",
     "options": [
@@ -6341,6 +7131,11 @@ lessons.push(...[
         "你最近做过什么好吃的吗？"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What sort of recipes does the speaker like?",
     "options": [
       "Only very expensive recipes",
@@ -6380,6 +7175,11 @@ lessons.push(...[
         "I've always wanted to try, but I haven't found the time yet.",
         "我一直想试，不过还没找到时间。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "When did the first speaker start learning?",
     "options": [
@@ -6421,6 +7221,11 @@ lessons.push(...[
         "有时间到处看看吗？"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What does the listener ask about?",
     "options": [
       "The person's salary",
@@ -6460,6 +7265,11 @@ lessons.push(...[
         "My first meal wasn't great, but I'm getting better.",
         "第一顿做得不好，不过现在在进步。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Why did the speaker start cooking?",
     "options": [
@@ -6501,6 +7311,11 @@ lessons.push(...[
         "我在这个城市已经住了三年。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Where did the speaker grow up?",
     "options": [
       "A town near the coast",
@@ -6540,6 +7355,11 @@ lessons.push(...[
         "Tell me about the book you mentioned earlier.",
         "说说你刚才提到的那本书吧。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What would the speaker rather avoid discussing?",
     "options": [
@@ -6581,6 +7401,11 @@ lessons.push(...[
         "你知道三明治好不好吃吗？"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What has the speaker tried?",
     "options": [
       "The sandwiches",
@@ -6620,6 +7445,11 @@ lessons.push(...[
         "There's a small place just across the road we could try.",
         "马路对面有家小店，可以去试试。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "How much time does the speaker have?",
     "options": [
@@ -6661,6 +7491,11 @@ lessons.push(...[
         "需要我带什么就告诉我。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "Which invitation is accepted?",
     "options": [
       "Friday dinner",
@@ -6700,6 +7535,11 @@ lessons.push(...[
         "Could we do another evening next week instead?",
         "可以改成下周某个晚上吗？"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What does the speaker suggest?",
     "options": [
@@ -6741,6 +7581,11 @@ lessons.push(...[
         "我可以给你电话号码，或者互留邮箱。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What does the speaker ask about?",
     "options": [
       "The best contact method",
@@ -6780,6 +7625,11 @@ lessons.push(...[
         "Mentioning where you met helps them remember you.",
         "提一下在哪里见过，方便对方想起你。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "What helps the other person remember the sender?",
     "options": [
@@ -6821,6 +7671,11 @@ lessons.push(...[
         "问题挺难，但大家都很友善。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "How did the presentation go?",
     "options": [
       "It was cancelled",
@@ -6861,6 +7716,11 @@ lessons.push(...[
         "也许哪天我们可以一起去走走。"
       ]
     ],
+    "speakers": [
+      0,
+      1,
+      1
+    ],
     "q": "What interest do they share?",
     "options": [
       "Hiking",
@@ -6900,6 +7760,11 @@ lessons.push(...[
         "Hopefully I'll see you at the next group walk.",
         "希望下次小组散步还能见到你。"
       ]
+    ],
+    "speakers": [
+      0,
+      1,
+      1
     ],
     "q": "Why does the speaker need to leave?",
     "options": [
