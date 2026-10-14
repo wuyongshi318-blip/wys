@@ -4,24 +4,27 @@
   const topics = [...new Set(lessons.map(l => l.theme))];
   let state;
   try { state = JSON.parse(localStorage.getItem(key) || '{}'); } catch { state = {}; }
-  state.prefs ||= Object.fromEntries(topics.map(t => [t, {on: t === '科研交流' || t === '日常安排', count: 1}]));
+  state.prefs ||= Object.fromEntries(topics.map(t => [t, {on:['科研交流','日常安排','接待来访','认识新朋友'].includes(t), count:1}]));
+  // Older saved preferences have no entries for newly introduced topics.
+  for (const t of topics) state.prefs[t] ||= {on:['接待来访','认识新朋友'].includes(t), count:1};
   state.materials ||= []; state.done ||= {}; state.answers ||= {};
   let draft = null, busy = false, selectedMaterial = null, pendingPack = null;
+  let catalogTopic = '', catalogQuery = '', visibleDate = today();
+  const lessonId = i => lessons[i].id || 'lesson-'+i;
   const baseRender = render, baseMark = mark, baseProgress = updateProgress;
   function save() {
     try { localStorage.setItem(key, JSON.stringify(state)); return true; }
     catch { toast('保存失败：浏览器空间不足或禁止存储，请先导出备份。'); return false; }
   }
-  function today() { return new Intl.DateTimeFormat('sv-SE', {timeZone:'Asia/Shanghai'}).format(new Date()); }
+  function today() { return YunaDailyPlan.dateKey(); }
   function plan() {
-    const d = today(), seed = Number(d.replaceAll('-', ''));
+    const d = today();
     return topics.filter(t => state.prefs[t]?.on).map(t => {
-      const pool = lessons.map((l,i) => ({id:'lesson-'+i, title:l.zh, theme:t, index:i, kind:'builtin'})).filter(x => lessons[x.index].theme === t);
+      const pool = lessons.map((l,i) => ({id:lessonId(i), title:l.zh, theme:t, index:i, kind:'builtin'})).filter(x => lessons[x.index].theme === t);
       for (const m of state.materials.filter(m => m.topic === t)) {
         m.modes.forEach(mode => pool.push({id:m.id+'-'+mode, title:m.title+' · '+mode, theme:t, material:m.id, mode, kind:'paper'}));
       }
-      const rotated = pool.map((_, i) => pool[(i+seed)%pool.length]);
-      return {topic:t, target:state.prefs[t].count, items:rotated.slice(0,state.prefs[t].count)};
+      return {topic:t, target:state.prefs[t].count, items:YunaDailyPlan.select(pool,state.prefs[t].count,d)};
     });
   }
   function countDone() { const ids = new Set(state.done[today()] || []); return plan().flatMap(p=>p.items).filter(i=>ids.has(i.id)).length; }
@@ -33,7 +36,7 @@
   };
   mark = function(type) {
     baseMark(type);
-    if (type==='listen' || type==='speak') complete('lesson-'+idx);
+    if (type==='listen' || type==='speak') complete(lessonId(idx));
   };
   function complete(id) {
     const d=today(); state.done[d] ||= [];
@@ -45,6 +48,7 @@
   }
   const nav=$('.tabs');
   nav.insertAdjacentHTML('afterbegin','<button class="tab" data-tab="plan">今日计划</button>');
+  nav.insertAdjacentHTML('beforeend','<button class="tab" data-tab="catalog">课程题库</button>');
   nav.insertAdjacentHTML('beforeend','<button class="tab" data-tab="library">私人素材</button><button class="tab" data-tab="settings">个性化设置</button>');
   document.querySelector('header').insertAdjacentHTML('beforeend','<button class="mini" id="local-space">本机学习空间</button>');
   $('#local-space').onclick=()=>go('settings');
@@ -59,11 +63,22 @@
   function heading(pill,title,text) {return `<section class="card studio-intro"><span class="pill">${pill}</span><h2>${title}</h2><p class="subtitle">${text}</p></section>`;}
   function planView() {
     const groups=plan(), done=state.done[today()]||[];
-    return heading('为你安排','今天，按自己的节奏。','每条内置课程完成听力或口语任一项即计数；文献练习需写下回答并标记完成。重复完成不重复计数。')+
+    return heading('每日轮换 · '+E(today()),'今天，按自己的节奏。','按北京时间每天换一组课程；题库循环后会再次遇到旧课。内置课程完成听力或口语任一项即计数；文献练习需写下回答并标记完成。')+`<p class="studio-actions"><button class="mini" id="browse-catalog">浏览全部 ${lessons.length} 课</button><button class="mini" id="plan-settings">调整话题与每日数量</button></p>`+
       (groups.length ? groups.map(g=>`<section class="card studio-section"><div class="studio-between"><h2>${E(g.topic)}</h2><span class="pill">每日目标 ${g.target} 条</span></div>${g.items.map(i=>`<button class="studio-task" data-task="${E(i.id)}"><span><strong>${E(i.title)}</strong><small>${i.kind==='paper'?'私人文献 · 自主表达':'原创双语课程 · 5–10 分钟'}</small></span><span>${done.includes(i.id)?'已完成 ✓':'开始 →'}</span></button>`).join('')}${g.items.length<g.target?`<p class="studio-notice">当前有 ${g.items.length} 条，距离目标还缺 ${g.target-g.items.length} 条。可在私人素材里添加练习；不会用重复内容凑数。</p>`:''}</section>`).join(''):'<div class="card empty">还没有选择话题。<p><button class="primary" id="choose-topics">选择我的话题</button></p></div>');
   }
+  function catalogResults() {
+    const query=catalogQuery.trim().toLocaleLowerCase();
+    const found=lessons.map((l,i)=>({l,i})).filter(({l})=>(!catalogTopic||l.theme===catalogTopic)&&(!query||[l.title,l.zh,l.theme,...l.lines.flat(),...l.words.flat()].join(' ').toLocaleLowerCase().includes(query)));
+    return `<p class="small" role="status">找到 ${found.length} 课 · 可随时自由练习；只有今日计划中的课计入今日目标。</p>`+(found.length?found.map(({l,i})=>`<button class="studio-task" data-course="${i}"><span><strong>${E(l.zh)}</strong><small>${E(l.title)} · ${E(l.theme)} · ${E(l.level||'B1')} 难度参考</small><small>${E(l.words[0][0])} · ${E(l.words[0][1])}</small></span><span>练习 →</span></button>`).join(''):'<p class="empty">没有匹配的课程。试试更短的关键词，或换一个话题。</p>');
+  }
+  function catalogView() {
+    return heading('生活场景 · '+lessons.length+' 课','先学今天用得上的一句话。','覆盖日常安排、学习生活、休闲、科研、出行办事、语言沟通、学习决策、接待来访和认识新朋友。短对话可逐句听、看中英对照，再换成自己的情况回答。')+`<section class="card studio-section"><div class="studio-catalog-filters"><label>话题<select id="catalog-topic"><option value="">全部话题</option>${topics.map(t=>`<option value="${E(t)}" ${catalogTopic===t?'selected':''}>${E(t)} · ${lessons.filter(l=>l.theme===t).length} 课</option>`).join('')}</select></label><label>查找场景或表达<input id="catalog-search" type="search" value="${E(catalogQuery)}" placeholder="例如：接机、退货、coffee"></label></div><div id="catalog-results">${catalogResults()}</div></section><section class="card studio-section"><h2>场景参考与原版练习</h2><p class="subtitle">新增对话、翻译和小测为本站原创。选题参考以下公开英语教学资料；原版视频、录音和全文在来源网站查看。</p><ul><li><a href="https://learnenglish.britishcouncil.org/free-resources/listening/a2" target="_blank" rel="noopener">British Council · A2 生活听力</a>：改约、留言、交通信息、课堂与办公场景。</li><li><a href="https://learnenglish.britishcouncil.org/free-resources/listening/a1/shopping-clothes" target="_blank" rel="noopener">British Council · Shopping for clothes</a>：购物沟通。</li><li><a href="https://learnenglish.britishcouncil.org/free-resources/speaking/a1/meeting-new-people" target="_blank" rel="noopener">British Council · Meeting new people</a>：初次见面与欢迎来访。</li><li><a href="https://learnenglish.britishcouncil.org/free-resources/speaking/a2" target="_blank" rel="noopener">British Council · A2 实用口语</a>：表达兴趣、工作、道歉与说明步骤。</li><li><a href="https://learnenglishteens.britishcouncil.org/skills/speaking/a2-speaking/making-plans" target="_blank" rel="noopener">British Council · Making plans</a>：商量活动安排。</li></ul></section>`;
+  }
+  function bindCatalogCourses() {
+    document.querySelectorAll('[data-course]').forEach(b=>b.onclick=()=>{idx=Number(b.dataset.course);stage=0;choice=null;go('listen');});
+  }
   function settingsView() {
-    return heading('本机保存版','把练习，调成你喜欢的样子。','设置、片段和回答仅保存在此浏览器。当前没有账号登录或云端同步；已分析的学习包可在私人素材中导入。共用设备上的其他使用者可能读到这些资料。')+`<form id="prefs-form" class="card studio-section"><h2>话题与每日数量</h2><p class="subtitle">关闭的话题不进入今日计划；每类可设 1–10 条。修改后立即重新安排今天的计划，已完成记录仍保留。</p>${topics.map((t,i)=>`<div class="studio-setting"><label><input type="checkbox" name="topic-${i}" ${state.prefs[t]?.on?'checked':''}> ${E(t)}</label><label class="small">每天 <input class="studio-number" type="number" name="count-${i}" min="1" max="10" required value="${state.prefs[t]?.count||1}"> 条</label></div>`).join('')}<p><button class="primary" type="submit">保存我的计划</button></p></form><section class="card studio-section"><h2>资料与备份</h2><p class="subtitle">浏览器清理数据会移除本机资料。备份包含你的私人片段和回答，请自行保管。</p><div class="studio-actions"><button class="mini" id="backup">导出学习备份</button><label class="mini studio-file-label">恢复备份<input id="restore" type="file" accept="application/json,.json" hidden></label></div><p class="small">账号登录将在配置认证服务后接入。</p></section>`;
+    return heading('本机保存版','把练习，调成你喜欢的样子。','设置、片段和回答仅保存在此浏览器。当前没有账号登录或云端同步；已分析的学习包可在私人素材中导入。共用设备上的其他使用者可能读到这些资料。')+`<form id="prefs-form" class="card studio-section"><h2>话题与每日数量</h2><p class="subtitle">每个话题有 20 课。关闭的话题不进入今日计划；每类可设 1–10 条。每天 1 条时，内置课程每 20 天轮换一遍。修改后立即重新安排今天的计划，已完成记录仍保留。</p>${topics.map((t,i)=>`<div class="studio-setting"><label><input type="checkbox" name="topic-${i}" ${state.prefs[t]?.on?'checked':''}> ${E(t)}</label><label class="small">每天 <input class="studio-number" type="number" name="count-${i}" min="1" max="10" required value="${state.prefs[t]?.count||1}"> 条</label></div>`).join('')}<p><button class="primary" type="submit">保存我的计划</button></p></form><section class="card studio-section"><h2>资料与备份</h2><p class="subtitle">浏览器清理数据会移除本机资料。备份包含你的私人片段和回答，请自行保管。</p><div class="studio-actions"><button class="mini" id="backup">导出学习备份</button><label class="mini studio-file-label">恢复备份<input id="restore" type="file" accept="application/json,.json" hidden></label></div><p class="small">账号登录将在配置认证服务后接入。</p></section>`;
   }
   function libraryView() {
     return heading('只在此浏览器','让读过的论文，变成说得出的英语。','PDF / TXT 在本机解析，原文件不保存、不上传。只保存你确认的片段、出处和练习回答。暂不支持扫描版识别和自动翻译。')+`<section class="card studio-section"><h2>导入已整理的学习包</h2><p class="subtitle">把文献交给聊天助手分析后，在这里导入生成的 JSON 学习包。标题、出处、中文导读、重点翻译和练习一次带入，不用复制原文。文件只在此浏览器读取；导入会追加素材，保留现有笔记和设置。</p><label class="primary studio-file-label">导入学习包<input id="pack-file" type="file" accept=".json,application/json" hidden></label><div id="pack-preview" role="status"></div></section><section class="card studio-section"><h2>自行导入原文（可选）</h2><p class="subtitle">仅导入你有权用于此次学习的内容。合法下载不等于拥有再传播或第三方处理授权；私人保存也不能代替对许可条款的检查。</p><label class="studio-check"><input id="rights" type="checkbox"> 我已检查材料的使用权限，并仅用于本人学习。</label><div class="studio-actions"><label class="primary studio-file-label">选择 PDF / TXT<input id="paper-file" type="file" accept=".pdf,.txt,application/pdf,text/plain" hidden ${busy?'disabled':''}></label><button class="mini" id="paste-material" ${busy?'disabled':''}>粘贴文字或自写笔记</button></div><p class="small" id="import-status" role="status">单文件上限 20 MB，PDF 最多解析前 30 页。可多次导入不同片段。</p><div id="draft-form"></div></section><section class="card studio-section"><h2>我的私人素材 <span class="pill">${state.materials.length} 篇</span></h2>${state.materials.length?state.materials.map(m=>`<div class="studio-material"><div><strong>${E(m.title)}</strong><p class="small">${E(m.author)} · ${E(m.topic)} · ${E(m.location)}<br>${E(m.modes.join(' / '))}</p></div><div class="studio-actions"><button class="mini" data-open-paper="${E(m.id)}">练习</button><button class="mini" data-delete-paper="${E(m.id)}">删除</button></div></div>`).join(''):'<p class="empty">你的素材只属于你。先导入一篇，选取一段，再开始练习。</p>'}</section>`;
@@ -87,9 +102,9 @@
     return `<section class="studio-section"><span class="pill">中文先读</span><h2>一分钟导读</h2><p class="studio-reading">${E(s.summary)}</p><details><summary>看懂方法、数据与边界</summary>${s.sections.map(x=>`<h3>${E(x.heading)}</h3><p class="studio-reading">${E(x.text)}</p><p class="small">${E(x.location)}</p>`).join('')}</details></section><details class="studio-section"><summary>重点句翻译（含原文位置）</summary>${s.translations.map(x=>`<div class="line"><p class="en">${E(x.en)}</p><p class="zh">${E(x.zh)}</p><p class="small">${E(x.location)}</p></div>`).join('')}</details><details class="studio-section"><summary>核心术语</summary>${s.terms.map(x=>`<div class="line"><strong>${E(x.en)} · ${E(x.zh)}</strong><p class="zh">${E(x.note)}</p></div>`).join('')}</details><h2>今天只练这一条</h2>${s.exercises[mode].map((x,i)=>`<div class="line"><p class="en"><strong>${E(x.en)}</strong></p><p class="zh">${E(x.zh)}</p><p class="tip">${E(x.hint)}</p><details><summary>需要帮助时看参考表达</summary><p class="en">${E(x.model_en)}</p><p class="zh">${E(x.model_zh)}</p><button class="mini" data-read-model="${i}">听参考表达</button></details><p class="small">${E(x.location)}</p></div>`).join('')}`;
   }
   render=function() {
-    if(!['plan','settings','library','paper'].includes(tab)){baseRender();updateProgress();return;}
+    if(!['plan','settings','library','paper','catalog'].includes(tab)){baseRender();updateProgress();return;}
     document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab || (tab==='paper'&&b.dataset.tab==='library')));
-    $('#content').innerHTML=tab==='plan'?planView():tab==='settings'?settingsView():tab==='library'?libraryView():exerciseView();
+    $('#content').innerHTML=tab==='plan'?planView():tab==='settings'?settingsView():tab==='library'?libraryView():tab==='catalog'?catalogView():exerciseView();
     bindStudio(); updateProgress();
   };
   function showDraft() {
@@ -139,6 +154,12 @@
     finally {busy=false;doc?.destroy().catch(()=>{});if($('#paper-file')){$('#paper-file').disabled=false;$('#paste-material').disabled=false;$('#paper-file').value='';}}
   }
   function bindStudio() {
+    $('#browse-catalog')?.addEventListener('click',()=>go('catalog'));
+    $('#plan-settings')?.addEventListener('click',()=>go('settings'));
+    const filterCatalog=()=>{$('#catalog-results').innerHTML=catalogResults();bindCatalogCourses();};
+    $('#catalog-topic')?.addEventListener('change',e=>{catalogTopic=e.target.value;filterCatalog();});
+    $('#catalog-search')?.addEventListener('input',e=>{catalogQuery=e.target.value;filterCatalog();});
+    bindCatalogCourses();
     $('#choose-topics')?.addEventListener('click',()=>go('settings'));
     document.querySelectorAll('[data-task]').forEach(b=>b.onclick=()=>{
       const item=plan().flatMap(p=>p.items).find(i=>i.id===b.dataset.task);
@@ -198,7 +219,10 @@
         for(const m of s.materials)if(!['id','title','author','source','location','topic','license','excerpt'].every(k=>typeof m[k]==='string')||m.excerpt.length>3000||!topics.includes(m.topic)||!Array.isArray(m.modes)||!m.modes.length||m.modes.some(x=>!modes.includes(x)))throw new Error('素材内容格式不正确');
         s.materials=s.materials.map(m=>YunaLearningPack.material(m,topics));
         if(new Set(s.materials.map(m=>m.id)).size!==s.materials.length||s.materials.some(m=>new Set(m.modes).size!==m.modes.length))throw new Error('备份中有重复素材或练习');
-        for(const t of topics)if(typeof s.prefs[t]?.on!=='boolean'||!Number.isInteger(s.prefs[t]?.count)||s.prefs[t].count<1||s.prefs[t].count>10)throw new Error('话题设置格式不正确');
+        for(const t of topics){
+          if(['接待来访','认识新朋友'].includes(t)&&!Object.hasOwn(s.prefs,t))s.prefs[t]={on:true,count:1};
+          if(typeof s.prefs[t]?.on!=='boolean'||!Number.isInteger(s.prefs[t]?.count)||s.prefs[t].count<1||s.prefs[t].count>10)throw new Error('话题设置格式不正确');
+        }
         if(Object.values(s.done).some(x=>!Array.isArray(x)||x.some(y=>typeof y!=='string'))||Object.values(s.answers).some(x=>typeof x!=='string'||x.length>12000))throw new Error('练习数据格式不正确');
         if(!confirm('恢复会替换本机的话题设置、素材和文献回答，继续？'))return;
         const prior=state;state=s;if(!save()){state=prior;return;}render();toast('已恢复设置、素材和文献回答。旧版课程笔记保留不变。');
@@ -207,5 +231,16 @@
   }
   function storeAnswer(){if(!selectedMaterial||!$('#paper-answer'))return true;const id=selectedMaterial.id+'-'+selectedMaterial.mode;state.answers[id]=$('#paper-answer').value;return save();}
   window.addEventListener('pagehide',()=>{storeAnswer();draft=null;});
+  function checkDate() {
+    const current=today();
+    if(current===visibleDate)return;
+    visibleDate=current;
+    // Refresh only the plan. Do not destroy an in-progress answer or recording.
+    if(tab==='plan'&&!busy&&!recording)render();else updateProgress();
+  }
+  window.addEventListener('focus',checkDate);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkDate();});
+  setInterval(checkDate,30000);
+  save();
   tab='plan';render();
 })();
